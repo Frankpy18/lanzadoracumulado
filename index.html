@@ -7,13 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
     :root {
-        --bg: #07090e;
-        --card: #0f121d;
-        --border: #1a1e2f;
-        --accent: #9f7aea;
-        --accent2: #6b46c1;
-        --text: #e4eaf5;
-        --muted: #8494ae;
+        --bg: #ffffff;
+        --card: #ffffff;
+        --border: #e2e8f0;
+        --accent: #4CAF50;
+        --accent2: #2E7D32;
+        --text: #1e293b;
+        --muted: #64748b;
     }
     
     * { 
@@ -32,13 +32,13 @@
         height: 100vh;
         overflow: hidden;
     }
-
     
+    /* El mismo fondo con destello de tu dashboard */
     body::before {
         content: ''; 
         position: fixed; 
         inset: 0;
-        background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(159,122,234,0.08), transparent);
+        background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(76,175,80,0.08), transparent);
         pointer-events: none; 
         z-index: 0;
     }
@@ -51,7 +51,7 @@
         text-align: center;
         position: relative;
         z-index: 10;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         max-width: 420px;
         width: 90%;
         animation: fadeUp 0.5s ease;
@@ -61,8 +61,8 @@
         width: 72px; 
         height: 72px; 
         border-radius: 50%;
-        background: linear-gradient(135deg, rgba(159,122,234,.18), rgba(159,122,234,.06));
-        border: 2px solid rgba(159,122,234,.25);
+        background: linear-gradient(135deg, rgba(76,175,80,.18), rgba(76,175,80,.06));
+        border: 2px solid rgba(76,175,80,.25);
         margin: 0 auto 20px; 
         display: flex; 
         align-items: center; 
@@ -97,7 +97,7 @@
         font-family: 'DM Sans', sans-serif;
         cursor: pointer;
         transition: all 0.2s ease;
-        box-shadow: 0 4px 15px rgba(159,122,234,0.25);
+        box-shadow: 0 4px 15px rgba(76,175,80,0.25);
     }
     
     .btn-launch:hover {
@@ -114,7 +114,7 @@
         color: var(--muted);
         margin-top: 20px;
         padding: 10px;
-        background: rgba(255,255,255,0.03);
+        background: rgba(76,175,80,0.04);
         border-radius: 8px;
         border: 1px dashed var(--border);
     }
@@ -130,6 +130,7 @@
     <div class="launcher-card">
         <div class="icon-wrap">🔒</div>
         <h1 class="title">MI TNPS</h1>
+        <p class="subtitle">Consola de Control de Operaciones y Seguimiento de Liderazgo.</p>
         
         <button class="btn-launch" onclick="abrirSistema()">Iniciar Consola Segura →</button>
         
@@ -144,6 +145,8 @@
             // toolbar=no, location=no y menubar=no son los encargados de limpiar la interfaz
             const opciones = "width=1366,height=768,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes";
             
+            // IMPORTANTE: Asegúrate de que el archivo con el código de los supervisores
+            // esté guardado exactamente con el nombre 'dashboard.html'
             window.open('dashboard.html', 'TNPS_Dashboard', opciones);
         }
     </script>
