@@ -32,8 +32,8 @@
         height: 100vh;
         overflow: hidden;
     }
+
     
-    /* El mismo fondo con destello de tu dashboard */
     body::before {
         content: ''; 
         position: fixed; 
@@ -144,8 +144,6 @@
             // toolbar=no, location=no y menubar=no son los encargados de limpiar la interfaz
             const opciones = "width=1366,height=768,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes";
             
-            // IMPORTANTE: Asegúrate de que el archivo con el código de los supervisores
-            // esté guardado exactamente con el nombre 'dashboard.html'
             window.open('dashboard.html', 'TNPS_Dashboard', opciones);
         }
     </script>
