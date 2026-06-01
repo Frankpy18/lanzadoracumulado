@@ -11,7 +11,7 @@
 :root{
   --bg:#f0f3ef;--bg2:#e8ebe5;--card:#ffffff;--card2:#f4f7f2;
   --border:#c0c5b8;--border2:#a8b0a0;
-  --accent:#0a632e;--accent2:#2a8b52; /* Paleta MDY */
+  --accent:#0a632e;--accent2:#2a8b52;
   --green:#2a8b52;--green2:rgba(42,139,82,0.12);
   --yellow:#dba045;--yellow2:rgba(219,160,69,0.12);
   --red:#a14d34;--red2:rgba(161,77,52,0.12);
@@ -232,14 +232,93 @@ tr:hover td{background:rgba(10,99,46,0.04);}
   padding:40px;text-align:center;color:var(--muted);font-size:13px;
 }
 
+/* ── TIPIFICACIÓN TABLE ── */
+.tipif-section{
+  margin-top:24px;
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:22px 24px;
+  animation:fadeUp .4s ease .1s both;
+}
+.tipif-controls{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;
+}
+.tipif-search{
+  flex:1;min-width:180px;max-width:280px;
+  background:var(--bg2);border:1.5px solid var(--border2);border-radius:8px;
+  padding:8px 14px;color:var(--text);font-size:13px;outline:none;
+  transition:border-color .2s;
+}
+.tipif-search:focus{border-color:var(--accent);}
+.tipif-tab-group{
+  display:flex;background:var(--bg2);border:1px solid var(--border2);
+  border-radius:8px;padding:3px;
+}
+.tipif-tab{
+  background:transparent;border:none;color:var(--muted2);
+  padding:7px 14px;border-radius:6px;font-size:12px;font-weight:600;
+  cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;
+}
+.tipif-tab.active{background:var(--card2);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+
+.tipif-wrap{overflow-x:auto;border:1px solid var(--border2);border-radius:10px;background:var(--bg2);}
+.tipif-table{width:100%;border-collapse:collapse;font-size:12px;min-width:700px;}
+.tipif-table th{
+  background:var(--card2);color:var(--muted2);font-family:'Rajdhani',sans-serif;
+  font-weight:600;text-transform:uppercase;letter-spacing:1px;
+  padding:10px 12px;position:sticky;top:0;border-bottom:1px solid var(--border2);
+  white-space:nowrap;
+}
+.tipif-table th.tip-col{min-width:200px;text-align:left;}
+.tipif-table th.num-col{width:80px;text-align:center;}
+.tipif-table td{
+  padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle;
+}
+.tipif-table tr:last-child td{border-bottom:none;}
+.tipif-table tr:hover td{background:rgba(10,99,46,0.03);}
+
+.tipif-table .asesor-cell{
+  font-weight:600;font-size:12px;
+}
+.tipif-table .asesor-id{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--muted);display:block;margin-top:1px;
+}
+.tipif-table .motivo-cell{
+  color:var(--muted2);font-size:11px;font-style:italic;
+  padding-left:24px;
+}
+.tipif-table .motivo-label{
+  display:inline-block;background:rgba(10,99,46,0.07);
+  border:1px solid rgba(10,99,46,0.15);border-radius:4px;
+  padding:2px 7px;font-style:normal;font-size:11px;color:var(--accent2);
+  white-space:nowrap;
+}
+.tip-num{font-family:'JetBrains Mono',monospace;font-weight:600;text-align:center;}
+.tip-prom{color:var(--green);}
+.tip-neut{color:var(--yellow);}
+.tip-det{color:var(--red);}
+.tip-total{color:var(--muted2);}
+.tip-tnps-cell{text-align:center;}
+.tip-tnps-badge{
+  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;
+  padding:2px 8px;border-radius:5px;display:inline-block;
+}
+.tip-tnps-badge.g{background:var(--green2);color:var(--green);}
+.tip-tnps-badge.y{background:var(--yellow2);color:var(--yellow);}
+.tip-tnps-badge.r{background:var(--red2);color:var(--red);}
+.tip-tnps-badge.n{color:var(--muted2);}
+
+.asesor-group-row td{background:rgba(10,99,46,0.03);border-top:2px solid var(--border);}
+.asesor-group-row:first-child td{border-top:none;}
+
 /* Custom Scrollbar */
-.table-wrap::-webkit-scrollbar {width:6px;}
-.table-wrap::-webkit-scrollbar-track {background:var(--bg2);}
-.table-wrap::-webkit-scrollbar-thumb {background:var(--border2);border-radius:4px;}
-.table-wrap::-webkit-scrollbar-thumb:hover {background:var(--muted);}
+.table-wrap::-webkit-scrollbar,.tipif-wrap::-webkit-scrollbar{width:6px;height:6px;}
+.table-wrap::-webkit-scrollbar-track,.tipif-wrap::-webkit-scrollbar-track{background:var(--bg2);}
+.table-wrap::-webkit-scrollbar-thumb,.tipif-wrap::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
+.table-wrap::-webkit-scrollbar-thumb:hover,.tipif-wrap::-webkit-scrollbar-thumb:hover{background:var(--muted);}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-.compare-row, .bottom-grid{animation:fadeUp .4s ease .05s both;}
+.compare-row,.bottom-grid{animation:fadeUp .4s ease .05s both;}
 
 @media(max-width:1024px){
   .stats-grid{grid-template-columns:1fr 1fr;}
@@ -248,6 +327,7 @@ tr:hover td{background:rgba(10,99,46,0.04);}
 @media(max-width:680px){
   .stats-grid{grid-template-columns:1fr;}
   #dashScreen{padding:16px 14px 32px;}
+  .tipif-controls{flex-direction:column;align-items:flex-start;}
 }
 </style>
 </head>
@@ -391,7 +471,6 @@ tr:hover td{background:rgba(10,99,46,0.04);}
         <button class="ranking-tab" id="tabMes" onclick="switchRanking('mes')">Acumulado del Mes</button>
       </div>
 
-      <!-- Table Ranking -->
       <div class="table-wrap">
         <table id="rankingTable">
           <thead>
@@ -407,111 +486,135 @@ tr:hover td{background:rgba(10,99,46,0.04);}
               <th class="sortable" data-col="tnps" style="text-align:center;width:72px;">TNPS</th>
             </tr>
           </thead>
-          <tbody id="rankingBody">
-            <!-- Dynamic rows -->
-          </tbody>
+          <tbody id="rankingBody"></tbody>
         </table>
       </div>
     </div>
   </div>
+
+  <!-- ── TIPIFICACIÓN POR ASESOR ────────────────────────────────────────── -->
+  <div class="tipif-section">
+    <div class="section-title"><span class="st-dot" style="background:var(--yellow)"></span>Motivo de Llamada (Tipificación) · Por Asesor</div>
+    <div class="tipif-controls">
+      <input class="tipif-search" id="tipifSearch" placeholder="🔍 Buscar asesor o motivo…" oninput="renderTipifTable()">
+      <div class="tipif-tab-group">
+        <button class="tipif-tab active" id="tipifTabDay" onclick="switchTipifTab('day')">Día de Hoy</button>
+        <button class="tipif-tab" id="tipifTabMes" onclick="switchTipifTab('mes')">Acumulado del Mes</button>
+      </div>
+    </div>
+    <div class="tipif-wrap">
+      <table class="tipif-table">
+        <thead>
+          <tr>
+            <th class="tip-col">Asesor / Motivo de Llamada</th>
+            <th class="num-col" style="color:var(--green)">Prom.</th>
+            <th class="num-col" style="color:var(--yellow)">Neut.</th>
+            <th class="num-col" style="color:var(--red)">Det.</th>
+            <th class="num-col">Total</th>
+            <th class="num-col">TNPS</th>
+          </tr>
+        </thead>
+        <tbody id="tipifBody"></tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
 <script>
 // =========================================================================
 // ⚙️ URLs de Google Sheets (publicadas como CSV)
 // =========================================================================
-const URL_DATA_ACUMULADA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCKkPiQkp8rJvOrz95FauJokkkbul0MDod3yNN2PGcYRHwscVIPnoQ8mjIlSsroMqO220K_BOlH4FB/pub?output=csv";
-const URL_DISTRIBUCION   = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTbpxF-5MB_g43RYGdZJIqoFMqgeFmuzNDF3IBWZz6-Pq6y6hqooqU9KtKhnJP_ovIvviXe50XZJzws/pub?output=csv";
+const URL_REPORTE_HISTORICO = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRyJPvCQb-sTQHwWa6-ezmyWCHjCr9L5UQBYOKNvzZVnvYSewUOBA_H_Xl5CHMhjgzyPBa6MULPHTNL/pub?output=csv";
+const URL_DISTRIBUCION      = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOh92jwPKC3py3JeQGzVVRuDxBp_72ndUcbmgNHdzwQ9anNTrc5xF-2G2riC2wXwTSM4dbg0-TYV3m/pub?output=csv";
 
 // =========================================================================
-// Columnas exactas (los headers se limpian con .trim() automáticamente)
+// Columnas del archivo ReporteHistorico (headers tal como aparecen en el CSV)
 // =========================================================================
-// distriadmin.xlsx
-const COL_DIST_ID     = "USUARIO";
-const COL_DIST_NOMBRE = "NOMBRES Y APELLIDOS";
-const COL_DIST_SUPER  = "SUPERVISOR DE OPERACIONES";
+const COL_FECHA         = "Fecha";
+const COL_NOMBRE_OP     = "Nombre Operador";   // Asesor por nombre
+const COL_NUM_EMPLEADO  = "Número Empleado";   // Código USUARIO del asesor
+const COL_TIPIFICACION  = "Tipificación";
+const COL_PREGUNTA1     = "Pregunta 1";         // Score NPS (0-10)
+const COL_RESULTADO     = "Resultado de llamada"; // "Atendido" / "No Atendido"
+const COL_ULT_SALIR     = "Ultimo en salir";   // "Cliente" = corte por cliente
 
-// Data_acumulada.xlsx
-const COL_AGENTE      = "USUARIO AGENTE";
-const COL_NPS         = "RESPUESTA PREGUNTA 1";
-const COL_FECHA       = "FECHA";
-const COL_HORA_FIN    = "HORA FIN DE LLAMADA";
-const COL_DURACION    = "DURACION";
-const COL_ID_LLAMADA  = "ID DE LLAMADA";
-const COL_DESCRIPCION_TRANSFERENCIA = "DESCRIPCION TRANSFERENCIA";
-const COL_CORTADA_POR = "CORTADA POR";
+// Columnas de la distribución (tele_distri)
+const COL_DIST_ID       = "USUARIO";
+const COL_DIST_NOMBRE   = "NOMBRES Y APELLIDOS";
+const COL_DIST_SUPER    = "SUPERVISOR DE OPERACIONES";
 
 // =========================================================================
 
 let AGENTS = {};
 let SUPERVISORS = {};
 let currentSupervisor = null;
-let currentRankingTab = 'day'; // 'day' o 'mes'
+let currentRankingTab = 'day';
+let currentTipifTab   = 'day';
 let trendChartInstance = null;
 
-// Convierte y formatea una cadena de hora "HH:MM:SS" a "HH:MM"
-function formatTimeString(str) {
-  if (!str) return '--:--';
-  const parts = str.trim().split(':');
-  if (parts.length >= 2) {
-    const hh = String(parts[0]).padStart(2, '0');
-    const mm = String(parts[1]).padStart(2, '0');
-    return `${hh}:${mm}`;
-  }
-  return str;
-}
+// ── Helpers ──────────────────────────────────────────────────────────────
 
-// Helper: convierte un valor de fecha (string DD/MM/YYYY o serial) a objeto Date y YYYYMMDD
 function parseFechaRow(val) {
   if (!val) return null;
   const s = String(val).trim();
+  // YYYY-MM-DD
+  if (/^\d{4}-\d{2}-\d{2}/.test(s)) {
+    const parts = s.substring(0, 10).split('-');
+    const y = parseInt(parts[0], 10);
+    const m = parseInt(parts[1], 10);
+    const d = parseInt(parts[2], 10);
+    const yymmdd = y * 10000 + m * 100 + d;
+    return { yymmdd, yyyymm: y * 100 + m };
+  }
+  // DD/MM/YYYY
   if (s.includes('/')) {
     const parts = s.split('/');
     if (parts.length === 3) {
       const d = parseInt(parts[0], 10);
-      const m = parseInt(parts[1], 10) - 1;
+      const m = parseInt(parts[1], 10);
       const y = parseInt(parts[2], 10);
-      const date = new Date(Date.UTC(y, m, d));
-      const yymmdd = y * 10000 + (m + 1) * 100 + d;
-      return { date, yymmdd, yyyymm: y * 100 + (m + 1) };
+      return { yymmdd: y * 10000 + m * 100 + d, yyyymm: y * 100 + m };
     }
   }
+  // Excel serial
   const num = parseFloat(s);
   if (!isNaN(num)) {
     const date = new Date(Math.round((num - 25569) * 86400000));
-    const yymmdd = date.getUTCFullYear() * 10000 + (date.getUTCMonth() + 1) * 100 + date.getUTCDate();
-    return { date, yymmdd, yyyymm: date.getUTCFullYear() * 100 + (date.getUTCMonth() + 1) };
+    const y = date.getUTCFullYear(), mo = date.getUTCMonth() + 1, d = date.getUTCDate();
+    return { yymmdd: y * 10000 + mo * 100 + d, yyyymm: y * 100 + mo };
   }
   return null;
 }
 
-// Convierte un YYYYMMDD a formato corto "DD/MM"
 function yyyymmddToShortDate(ymd) {
   const d = ymd % 100;
   const m = Math.floor((ymd % 10000) / 100);
-  return `${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}`;
+  return `${String(d).padStart(2,'0')}/${String(m).padStart(2,'0')}`;
 }
 
-// Clasifica puntuación NPS
 function clasificarNPS(score) {
   if (score >= 9) return 'Promotor';
   if (score >= 7) return 'Pasivo';
   return 'Detractor';
 }
 
-// Calcula TNPS = ((Promotores - Detractores) / Total) * 100
 function calcTNPS(prom, det, total) {
   if (total === 0) return null;
   return ((prom - det) / total) * 100;
 }
 
-// Carga CSV con PapaParse
+function tnpsColor(v) {
+  if (v === null || v === undefined || isNaN(v)) return 'var(--muted2)';
+  if (v >= 82) return 'var(--green)';
+  if (v >= 70) return 'var(--yellow)';
+  return 'var(--red)';
+}
+
 function fetchCSV(url) {
   return new Promise((resolve, reject) => {
     Papa.parse(url, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
+      download: true, header: true, skipEmptyLines: true,
       transformHeader: h => h.trim(),
       complete: r => resolve(r.data),
       error: err => reject(err)
@@ -519,30 +622,29 @@ function fetchCSV(url) {
   });
 }
 
+// ── Inicialización de datos ───────────────────────────────────────────────
+
 async function inicializarDatos() {
   try {
-    const [dataAcumulada, distribucion] = await Promise.all([
-      fetchCSV(URL_DATA_ACUMULADA),
+    const [reporte, distribucion] = await Promise.all([
+      fetchCSV(URL_REPORTE_HISTORICO),
       fetchCSV(URL_DISTRIBUCION)
     ]);
 
-    // ── 1. Construir directorio de supervisores y asesores ────────────────
+    // ── 1. Construir directorio Supervisores → Asesores desde tele_distri ──
     distribucion.forEach(row => {
       const codigo = row[COL_DIST_ID]?.trim().toUpperCase();
       if (!codigo) return;
-
       const superName = row[COL_DIST_SUPER]?.trim().toUpperCase();
-      if (!superName || superName === '-') return;
+      if (!superName || superName === '-' || superName === '') return;
 
-      // Inicializar Supervisor
       if (!SUPERVISORS[superName]) {
         SUPERVISORS[superName] = {
-          nombre: row[COL_DIST_SUPER]?.trim(),
-          asesores: [], // lista de objetos asesor para este supervisor
-          dia: { prom: 0, pas: 0, det: 0, total: 0, tnps: null, atendidas: 0, derivadas: 0, cortes: 0 },
-          mes: { prom: 0, pas: 0, det: 0, total: 0, tnps: null, atendidas: 0, derivadas: 0, cortes: 0 },
-          trendMap: {}, // mapeo temporal fechaInt -> { prom, pas, det, total }
-          trend: []    // historial ordenado [{fecha, tnps}]
+          nombre:   row[COL_DIST_SUPER]?.trim(),
+          asesores: [],
+          dia: { prom:0, pas:0, det:0, total:0, tnps:null, atendidas:0, derivadas:0, cortes:0 },
+          mes: { prom:0, pas:0, det:0, total:0, tnps:null, atendidas:0, derivadas:0, cortes:0 },
+          trendMap: {}, trend: []
         };
       }
 
@@ -550,17 +652,19 @@ async function inicializarDatos() {
         usuario:    codigo,
         nombre:     row[COL_DIST_NOMBRE]?.trim() || '—',
         supervisor: superName,
-        mes: { prom: 0, pas: 0, det: 0, total: 0, tnps: null, atendidas: 0, derivadas: 0, cortes: 0 },
-        dia: { prom: 0, pas: 0, det: 0, total: 0, tnps: null, atendidas: 0, derivadas: 0, cortes: 0 },
-        dailyMetrics: {}, // mapeo temporal fechaInt -> { prom, det, total }
-        trend: []
+        dia: { prom:0, pas:0, det:0, total:0, tnps:null, atendidas:0, cortes:0 },
+        mes: { prom:0, pas:0, det:0, total:0, tnps:null, atendidas:0, cortes:0 },
+        dailyMetrics: {}, trend: [],
+        // tipificacion[periodo][tipif] = {prom, pas, det, total}
+        tipifDia: {},
+        tipifMes: {}
       };
 
       AGENTS[codigo] = agentData;
       SUPERVISORS[superName].asesores.push(agentData);
     });
 
-    // Llenar datalist de supervisores para autocompletado en el Login
+    // Llenar datalist
     const datalist = document.getElementById('supervisoresList');
     Object.keys(SUPERVISORS).sort().forEach(sup => {
       const opt = document.createElement('option');
@@ -568,168 +672,139 @@ async function inicializarDatos() {
       datalist.appendChild(opt);
     });
 
-    // ── 2. Detectar la fecha más reciente en los datos ─────────────────────
+    // ── 2. Detectar fecha más reciente ────────────────────────────────────
     let maxFechaInt = 0;
-    dataAcumulada.forEach(row => {
+    reporte.forEach(row => {
       const p = parseFechaRow(row[COL_FECHA]);
-      if (p && p.yymmdd > maxFechaInt) {
-        maxFechaInt = p.yymmdd;
-      }
+      if (p && p.yymmdd > maxFechaInt) maxFechaInt = p.yymmdd;
     });
-
     const maxFechaYYYYMM = Math.floor(maxFechaInt / 100);
 
-    // ── 3. Procesar trazabilidad y agrupar por agente y fecha ──────────────
-    const enc = {};
+    // ── 3. Procesar ReporteHistorico ──────────────────────────────────────
+    // El asesor se identifica por "Número Empleado" (USUARIO en distribución)
+    reporte.forEach(row => {
+      // Intentar por código de empleado primero, luego por nombre
+      let codigo = row[COL_NUM_EMPLEADO]?.trim().toUpperCase();
+      let agentObj = codigo ? AGENTS[codigo] : null;
 
-    dataAcumulada.forEach(row => {
-      const codigo = row[COL_AGENTE]?.trim().toUpperCase();
-      if (!codigo || codigo === '-' || !AGENTS[codigo]) return;
+      // Fallback: buscar por nombre del operador si no hay match por código
+      if (!agentObj) {
+        const nombreOp = row[COL_NOMBRE_OP]?.trim().toUpperCase();
+        if (nombreOp) {
+          const found = Object.values(AGENTS).find(a => a.nombre.toUpperCase() === nombreOp);
+          if (found) { agentObj = found; codigo = found.usuario; }
+        }
+      }
+
+      if (!agentObj) return;
 
       const pDate = parseFechaRow(row[COL_FECHA]);
       if (!pDate) return;
-
-      // Filtrar solo el mes de la fecha más reciente
       if (pDate.yyyymm !== maxFechaYYYYMM) return;
 
-      const a = AGENTS[codigo];
       const fechaInt = pDate.yymmdd;
-      const esHoy = fechaInt === maxFechaInt;
-      const supervisor = SUPERVISORS[a.supervisor];
+      const esHoy   = fechaInt === maxFechaInt;
+      const supervisor = SUPERVISORS[agentObj.supervisor];
+      if (!supervisor) return;
 
-      // ── A. Calcular Llamadas Atendidas (Duración > 5s y ID de llamada válido) ──
-      const durSeg = parseFloat(row[COL_DURACION]);
-      const idLlamada = row[COL_ID_LLAMADA]?.trim();
-      if (idLlamada && idLlamada !== '-' && !isNaN(durSeg) && durSeg > 5) {
-        a.mes.atendidas++;
+      // A. Llamadas atendidas (Resultado = "Atendido")
+      const resultado = row[COL_RESULTADO]?.trim() || '';
+      if (resultado === 'Atendido') {
+        agentObj.mes.atendidas++;
         supervisor.mes.atendidas++;
-        if (esHoy) {
-          a.dia.atendidas++;
-          supervisor.dia.atendidas++;
-        }
+        if (esHoy) { agentObj.dia.atendidas++; supervisor.dia.atendidas++; }
       }
 
-      // ── B. Calcular Derivadas a Encuestas (Contiene PeruClaro_SatisfacationSurvey) ──
-      const descTrans = row[COL_DESCRIPCION_TRANSFERENCIA]?.trim() || '';
-      if (descTrans.includes('PeruClaro_SatisfacationSurvey')) {
-        a.mes.derivadas++;
-        supervisor.mes.derivadas++;
-        if (esHoy) {
-          a.dia.derivadas++;
-          supervisor.dia.derivadas++;
-        }
-      }
-
-      // ── C. Calcular Cortes de Cliente (Cortada por cliente) ──
-      const cortadaPor = row[COL_CORTADA_POR]?.trim().toUpperCase() || '';
-      if (cortadaPor === 'CLIENTE') {
-        a.mes.cortes++;
+      // B. Cortes de cliente (Ultimo en salir = "Cliente")
+      const ultSalir = row[COL_ULT_SALIR]?.trim() || '';
+      if (ultSalir === 'Cliente') {
+        agentObj.mes.cortes++;
         supervisor.mes.cortes++;
-        if (esHoy) {
-          a.dia.cortes++;
-          supervisor.dia.cortes++;
-        }
+        if (esHoy) { agentObj.dia.cortes++; supervisor.dia.cortes++; }
       }
 
-      // ── D. Calcular Encuestas NPS (Solo si tiene un score válido) ───────────
-      const scoreRaw = row[COL_NPS];
-      if (!scoreRaw || scoreRaw === '-') return;
+      // C. NPS + Tipificación
+      const scoreRaw = row[COL_PREGUNTA1];
+      if (!scoreRaw || scoreRaw === '---' || scoreRaw === '-') return;
       const score = parseFloat(scoreRaw);
       if (isNaN(score) || score < 0 || score > 10) return;
 
-      const scoreInt = Math.round(score);
-      const tipo = clasificarNPS(scoreInt);
+      const tipo  = clasificarNPS(Math.round(score));
+      const tipif = (row[COL_TIPIFICACION]?.trim() || '---').toUpperCase();
+      // Ignorar tipificaciones vacías o nulas como '---'
+      const tipifLabel = (tipif === '---' || tipif === '') ? 'SIN TIPIFICACIÓN' : tipif;
 
-      // Acumulación de Encuestas para Agente
-      a.mes.total++;
-      if (esHoy) a.dia.total++;
-
-      if (tipo === 'Promotor') {
-        a.mes.prom++;
-        if (esHoy) a.dia.prom++;
-      } else if (tipo === 'Pasivo') {
-        a.mes.pas++;
-        if (esHoy) a.dia.pas++;
-      } else {
-        a.mes.det++;
-        if (esHoy) a.dia.det++;
-      }
-
-      // Estructura temporal diaria del Agente
-      if (!a.dailyMetrics[fechaInt]) {
-        a.dailyMetrics[fechaInt] = { prom: 0, pas: 0, det: 0, total: 0 };
-      }
-      a.dailyMetrics[fechaInt].total++;
-      if (tipo === 'Promotor') a.dailyMetrics[fechaInt].prom++;
-      else if (tipo === 'Pasivo') a.dailyMetrics[fechaInt].pas++;
-      else a.dailyMetrics[fechaInt].det++;
-
-      // Acumulación de Encuestas para el Supervisor
+      // Agente métricas globales
+      agentObj.mes.total++;
       supervisor.mes.total++;
-      if (esHoy) supervisor.dia.total++;
+      if (esHoy) { agentObj.dia.total++; supervisor.dia.total++; }
 
       if (tipo === 'Promotor') {
-        supervisor.mes.prom++;
-        if (esHoy) supervisor.dia.prom++;
+        agentObj.mes.prom++; supervisor.mes.prom++;
+        if (esHoy) { agentObj.dia.prom++; supervisor.dia.prom++; }
       } else if (tipo === 'Pasivo') {
-        supervisor.mes.pas++;
-        if (esHoy) supervisor.dia.pas++;
+        agentObj.mes.pas++; supervisor.mes.pas++;
+        if (esHoy) { agentObj.dia.pas++; supervisor.dia.pas++; }
       } else {
-        supervisor.mes.det++;
-        if (esHoy) supervisor.dia.det++;
+        agentObj.mes.det++; supervisor.mes.det++;
+        if (esHoy) { agentObj.dia.det++; supervisor.dia.det++; }
       }
 
-      // Estructura temporal diaria del Supervisor
-      if (!supervisor.trendMap[fechaInt]) {
-        supervisor.trendMap[fechaInt] = { prom: 0, pas: 0, det: 0, total: 0 };
-      }
+      // Métricas diarias del agente (para trend)
+      if (!agentObj.dailyMetrics[fechaInt]) agentObj.dailyMetrics[fechaInt] = {prom:0,pas:0,det:0,total:0};
+      agentObj.dailyMetrics[fechaInt].total++;
+      if (tipo==='Promotor') agentObj.dailyMetrics[fechaInt].prom++;
+      else if (tipo==='Pasivo') agentObj.dailyMetrics[fechaInt].pas++;
+      else agentObj.dailyMetrics[fechaInt].det++;
+
+      // Métricas diarias del supervisor (para trend)
+      if (!supervisor.trendMap[fechaInt]) supervisor.trendMap[fechaInt] = {prom:0,pas:0,det:0,total:0};
       supervisor.trendMap[fechaInt].total++;
-      if (tipo === 'Promotor') supervisor.trendMap[fechaInt].prom++;
-      else if (tipo === 'Pasivo') supervisor.trendMap[fechaInt].pas++;
+      if (tipo==='Promotor') supervisor.trendMap[fechaInt].prom++;
+      else if (tipo==='Pasivo') supervisor.trendMap[fechaInt].pas++;
       else supervisor.trendMap[fechaInt].det++;
+
+      // D. ──── Tipificación por Asesor ─────────────────────────────────
+      // Mes
+      if (!agentObj.tipifMes[tipifLabel]) agentObj.tipifMes[tipifLabel] = {prom:0,pas:0,det:0,total:0};
+      agentObj.tipifMes[tipifLabel].total++;
+      if (tipo==='Promotor')  agentObj.tipifMes[tipifLabel].prom++;
+      else if (tipo==='Pasivo') agentObj.tipifMes[tipifLabel].pas++;
+      else agentObj.tipifMes[tipifLabel].det++;
+
+      // Día
+      if (esHoy) {
+        if (!agentObj.tipifDia[tipifLabel]) agentObj.tipifDia[tipifLabel] = {prom:0,pas:0,det:0,total:0};
+        agentObj.tipifDia[tipifLabel].total++;
+        if (tipo==='Promotor')  agentObj.tipifDia[tipifLabel].prom++;
+        else if (tipo==='Pasivo') agentObj.tipifDia[tipifLabel].pas++;
+        else agentObj.tipifDia[tipifLabel].det++;
+      }
     });
 
-    // ── 4. Calcular métricas finales y tendencias de agentes y supervisores ──
-    // A. AGENTES
-    Object.keys(AGENTS).forEach(codigo => {
-      const a = AGENTS[codigo];
-      const fechasSorted = Object.keys(a.dailyMetrics).map(Number).sort((x, y) => x - y);
-      let dailyTNPSValues = [];
-
-      fechasSorted.forEach(fechaInt => {
-        const d = a.dailyMetrics[fechaInt];
-        const tnpsDia = calcTNPS(d.prom, d.det, d.total);
-        if (tnpsDia !== null) {
-          dailyTNPSValues.push(tnpsDia);
-        }
-      });
-
-      // El TNPS del mes es el promedio de los TNPS diarios
-      a.mes.tnps = dailyTNPSValues.length > 0 ? (dailyTNPSValues.reduce((sum, v) => sum + v, 0) / dailyTNPSValues.length) : null;
+    // ── 4. Calcular TNPS finales ──────────────────────────────────────────
+    Object.values(AGENTS).forEach(a => {
+      const fechas = Object.keys(a.dailyMetrics).map(Number).sort((x,y)=>x-y);
+      const dailyVals = fechas.map(f => {
+        const d = a.dailyMetrics[f];
+        return calcTNPS(d.prom, d.det, d.total);
+      }).filter(v => v !== null);
+      a.mes.tnps = dailyVals.length > 0 ? dailyVals.reduce((s,v)=>s+v,0)/dailyVals.length : null;
       a.dia.tnps = calcTNPS(a.dia.prom, a.dia.det, a.dia.total);
     });
 
-    // B. SUPERVISORES
-    Object.keys(SUPERVISORS).forEach(supName => {
-      const sup = SUPERVISORS[supName];
-      const fechasSorted = Object.keys(sup.trendMap).map(Number).sort((x, y) => x - y);
-      let dailyTNPSValues = [];
-
-      fechasSorted.forEach(fechaInt => {
-        const d = sup.trendMap[fechaInt];
-        const tnpsDia = calcTNPS(d.prom, d.det, d.total);
-        if (tnpsDia !== null) {
-          dailyTNPSValues.push(tnpsDia);
-          sup.trend.push({
-            fecha: yyyymmddToShortDate(fechaInt),
-            tnps: tnpsDia
-          });
+    Object.values(SUPERVISORS).forEach(sup => {
+      const fechas = Object.keys(sup.trendMap).map(Number).sort((x,y)=>x-y);
+      const dailyVals = [];
+      fechas.forEach(f => {
+        const d = sup.trendMap[f];
+        const v = calcTNPS(d.prom, d.det, d.total);
+        if (v !== null) {
+          dailyVals.push(v);
+          sup.trend.push({ fecha: yyyymmddToShortDate(f), tnps: v });
         }
       });
-
-      // TNPS del mes del supervisor (promedio de los TNPS agregados de su equipo de cada día)
-      sup.mes.tnps = dailyTNPSValues.length > 0 ? (dailyTNPSValues.reduce((sum, v) => sum + v, 0) / dailyTNPSValues.length) : null;
-      // TNPS del día del supervisor (agregado de hoy)
+      sup.mes.tnps = dailyVals.length > 0 ? dailyVals.reduce((s,v)=>s+v,0)/dailyVals.length : null;
       sup.dia.tnps = calcTNPS(sup.dia.prom, sup.dia.det, sup.dia.total);
     });
 
@@ -739,8 +814,8 @@ async function inicializarDatos() {
     document.getElementById('btnBuscar').disabled = false;
     document.getElementById('userInput').focus();
 
-  } catch (error) {
-    console.error('Error cargando datos:', error);
+  } catch (err) {
+    console.error('Error cargando datos:', err);
     document.getElementById('loginStatus').innerHTML = '❌ Error al conectar con Google Sheets.';
     document.getElementById('loginStatus').style.color = 'var(--red)';
   }
@@ -748,26 +823,15 @@ async function inicializarDatos() {
 
 inicializarDatos();
 
-// ──────────────────────────────────────────────────────────────────────────
-
-function tnpsColor(v) {
-  if (v === null || v === undefined || isNaN(v)) return 'var(--muted2)';
-  if (v >= 82) return 'var(--green)';
-  if (v >= 70) return 'var(--yellow)';
-  return 'var(--red)';
-}
+// ── Buscar / Render ───────────────────────────────────────────────────────
 
 function buscar() {
   const raw = document.getElementById('userInput').value.trim().toUpperCase();
   const errEl = document.getElementById('errMsg');
   errEl.style.display = 'none';
   if (!raw) return;
-
   const supervisor = SUPERVISORS[raw];
-  if (!supervisor) {
-    errEl.style.display = 'block';
-    return;
-  }
+  if (!supervisor) { errEl.style.display = 'block'; return; }
   currentSupervisor = supervisor;
   renderDash();
 }
@@ -777,7 +841,7 @@ function renderDash() {
   document.getElementById('dashSupName').textContent = s.nombre;
   document.getElementById('dashTeamSize').textContent = `${s.asesores.length} Asesores`;
 
-  // ── Métricas del Día del Equipo ─────────────────────────────────────────
+  // KPIs Día
   const dia = s.dia;
   document.getElementById('tnpsDay').textContent = dia.tnps !== null ? dia.tnps.toFixed(2) : '—';
   document.getElementById('tnpsDay').style.setProperty('--cv', tnpsColor(dia.tnps));
@@ -786,16 +850,15 @@ function renderDash() {
   document.getElementById('dayD').textContent   = dia.det;
   document.getElementById('dayN').textContent   = dia.total;
   document.getElementById('dayAtendidas').textContent = dia.atendidas;
-
   if (dia.total > 0) {
-    document.getElementById('pbDayP').style.width   = (dia.prom / dia.total * 100) + '%';
-    document.getElementById('pbDayPas').style.width = (dia.pas  / dia.total * 100) + '%';
-    document.getElementById('pbDayD').style.width   = (dia.det  / dia.total * 100) + '%';
+    document.getElementById('pbDayP').style.width   = (dia.prom/dia.total*100)+'%';
+    document.getElementById('pbDayPas').style.width = (dia.pas/dia.total*100)+'%';
+    document.getElementById('pbDayD').style.width   = (dia.det/dia.total*100)+'%';
   } else {
-    ['pbDayP','pbDayPas','pbDayD'].forEach(id => document.getElementById(id).style.width = '0%');
+    ['pbDayP','pbDayPas','pbDayD'].forEach(id=>document.getElementById(id).style.width='0%');
   }
 
-  // ── Métricas del Mes del Equipo ─────────────────────────────────────────
+  // KPIs Mes
   const mes = s.mes;
   document.getElementById('tnpsMes').textContent = mes.tnps !== null ? mes.tnps.toFixed(2) : '—';
   document.getElementById('tnpsMes').style.setProperty('--cv', tnpsColor(mes.tnps));
@@ -804,22 +867,20 @@ function renderDash() {
   document.getElementById('mesD').textContent   = mes.det;
   document.getElementById('mesN').textContent   = mes.total;
   document.getElementById('mesAtendidas').textContent = mes.atendidas;
-
   if (mes.total > 0) {
-    document.getElementById('pbMesP').style.width   = (mes.prom / mes.total * 100) + '%';
-    document.getElementById('pbMesPas').style.width = (mes.pas  / mes.total * 100) + '%';
-    document.getElementById('pbMesD').style.width   = (mes.det  / mes.total * 100) + '%';
+    document.getElementById('pbMesP').style.width   = (mes.prom/mes.total*100)+'%';
+    document.getElementById('pbMesPas').style.width = (mes.pas/mes.total*100)+'%';
+    document.getElementById('pbMesD').style.width   = (mes.det/mes.total*100)+'%';
   } else {
-    ['pbMesP','pbMesPas','pbMesD'].forEach(id => document.getElementById(id).style.width = '0%');
+    ['pbMesP','pbMesPas','pbMesD'].forEach(id=>document.getElementById(id).style.width='0%');
   }
 
-  // ── Derivaciones & Cortes ───────────────────────────────────────────────
   document.getElementById('dayDerivadas').textContent = dia.derivadas;
   document.getElementById('mesDerivadas').textContent = mes.derivadas;
-  document.getElementById('dayCortes').textContent = dia.cortes;
-  document.getElementById('mesCortes').textContent = mes.cortes;
+  document.getElementById('dayCortes').textContent    = dia.cortes;
+  document.getElementById('mesCortes').textContent    = mes.cortes;
 
-  // ── Gráfica de Tendencia de Supervisor ──────────────────────────────────
+  // Trend chart
   if (trendChartInstance) { trendChartInstance.destroy(); trendChartInstance = null; }
   if (s.trend && s.trend.length > 0) {
     const ctx = document.getElementById('trendChart').getContext('2d');
@@ -831,15 +892,11 @@ function renderDash() {
           data: s.trend.map(t => t.tnps),
           borderColor: '#0a632e',
           backgroundColor: 'rgba(10,99,46,0.08)',
-          borderWidth: 2.5,
-          pointRadius: 5,
-          tension: 0.4,
-          fill: true
+          borderWidth: 2.5, pointRadius: 5, tension: 0.4, fill: true
         }]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
+        responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
           x: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { color: '#719d88' } },
@@ -849,22 +906,22 @@ function renderDash() {
     });
   }
 
-  // ── Renderizar Ranking de Asesores ──────────────────────────────────────
   renderRankingTable();
+  renderTipifTable();
 
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('dashScreen').style.display  = 'block';
 }
 
-// ── Sorting state ─────────────────────────────────────────────────────────
-let sortCol = 'tnps';   // default
-let sortDir = -1;       // -1 = desc (mayor primero), +1 = asc
+// ── Ranking ───────────────────────────────────────────────────────────────
+
+let sortCol = 'tnps', sortDir = -1;
 
 function switchRanking(tab) {
   document.getElementById('tabDay').classList.toggle('active', tab === 'day');
   document.getElementById('tabMes').classList.toggle('active', tab === 'mes');
   currentRankingTab = tab;
-  sortCol = 'tnps'; sortDir = -1; // reset al cambiar pestaña
+  sortCol = 'tnps'; sortDir = -1;
   updateSortHeaders();
   renderRankingTable();
 }
@@ -872,22 +929,15 @@ function switchRanking(tab) {
 function updateSortHeaders() {
   document.querySelectorAll('#rankingHeader th.sortable').forEach(th => {
     th.classList.remove('sort-asc','sort-desc');
-    if (th.dataset.col === sortCol) {
-      th.classList.add(sortDir === -1 ? 'sort-desc' : 'sort-asc');
-    }
+    if (th.dataset.col === sortCol) th.classList.add(sortDir === -1 ? 'sort-desc' : 'sort-asc');
   });
 }
 
 function setupSortableHeaders() {
   document.querySelectorAll('#rankingHeader th.sortable').forEach(th => {
     th.addEventListener('click', () => {
-      if (sortCol === th.dataset.col) {
-        sortDir *= -1;
-      } else {
-        sortCol = th.dataset.col;
-        // Texto: asc por defecto; números: desc por defecto
-        sortDir = (sortCol === 'nombre') ? 1 : -1;
-      }
+      if (sortCol === th.dataset.col) sortDir *= -1;
+      else { sortCol = th.dataset.col; sortDir = sortCol === 'nombre' ? 1 : -1; }
       updateSortHeaders();
       renderRankingTable();
     });
@@ -898,23 +948,17 @@ function renderRankingTable() {
   const s = currentSupervisor;
   const body = document.getElementById('rankingBody');
   body.innerHTML = '';
-
   const isDay = currentRankingTab === 'day';
+
   let list = s.asesores.map(a => {
     const m = isDay ? a.dia : a.mes;
     return { a, enc: m.total, prom: m.prom, neut: m.pas, det: m.det, cortes: m.cortes, atend: m.atendidas, tnps: m.tnps };
   });
 
-  // Ordenar
   list.sort((x, y) => {
-    let va, vb;
-    if (sortCol === 'nombre') {
-      va = x.a.nombre; vb = y.a.nombre;
-      return sortDir * va.localeCompare(vb);
-    }
-    va = x[sortCol] ?? (sortCol === 'tnps' ? -9999 : -1);
-    vb = y[sortCol] ?? (sortCol === 'tnps' ? -9999 : -1);
-    // Asesores sin encuestas siempre al fondo cuando se ordena por TNPS
+    if (sortCol === 'nombre') return sortDir * x.a.nombre.localeCompare(y.a.nombre);
+    let va = x[sortCol] ?? (sortCol === 'tnps' ? -9999 : -1);
+    let vb = y[sortCol] ?? (sortCol === 'tnps' ? -9999 : -1);
     if (sortCol === 'tnps') {
       if (x.enc === 0 && y.enc === 0) return 0;
       if (x.enc === 0) return 1;
@@ -929,40 +973,121 @@ function renderRankingTable() {
   }
 
   list.forEach(({ a, enc, prom, neut, det, cortes, atend, tnps }, index) => {
-    let colorClass = 'none', tnpsString = '—';
+    let colorClass = 'none', tnpsStr = '—';
     if (enc > 0 && tnps !== null) {
-      tnpsString = tnps.toFixed(2) + '%';
-      if (tnps >= 82) colorClass = 'green';
-      else if (tnps >= 70) colorClass = 'yellow';
-      else colorClass = 'red';
+      tnpsStr = tnps.toFixed(2) + '%';
+      colorClass = tnps >= 82 ? 'green' : tnps >= 70 ? 'yellow' : 'red';
     }
-
     const num = index + 1;
-    let rankBadge;
-    if (num === 1) rankBadge = `<span class="rank-badge rank-1">#1</span>`;
-    else if (num === 2) rankBadge = `<span class="rank-badge rank-2">#2</span>`;
-    else if (num === 3) rankBadge = `<span class="rank-badge rank-3">#3</span>`;
-    else rankBadge = `<span class="rank-badge rank-other">${num}</span>`;
-
-    const row = document.createElement('tr');
+    let rankBadge = num === 1 ? `<span class="rank-badge rank-1">#1</span>`
+      : num === 2 ? `<span class="rank-badge rank-2">#2</span>`
+      : num === 3 ? `<span class="rank-badge rank-3">#3</span>`
+      : `<span class="rank-badge rank-other">${num}</span>`;
     const mono = `font-family:'JetBrains Mono',monospace;font-weight:600;text-align:center;`;
+    const row = document.createElement('tr');
     row.innerHTML = `
       <td style="text-align:center;">${rankBadge}</td>
-      <td>
-        <span class="rank-name">${a.nombre}</span>
-        <span class="rank-id">${a.usuario}</span>
-      </td>
+      <td><span class="rank-name">${a.nombre}</span><span class="rank-id">${a.usuario}</span></td>
       <td style="${mono}">${enc}</td>
       <td style="${mono}color:var(--green);">${prom}</td>
       <td style="${mono}color:var(--yellow);">${neut}</td>
       <td style="${mono}color:var(--red);">${det}</td>
       <td style="${mono}color:var(--muted2);">${cortes}</td>
       <td style="${mono}color:var(--blue);">${atend}</td>
-      <td style="text-align:center;"><span class="rank-tnps ${colorClass}">${tnpsString}</span></td>
+      <td style="text-align:center;"><span class="rank-tnps ${colorClass}">${tnpsStr}</span></td>
     `;
     body.appendChild(row);
   });
 }
+
+// ── Tipificación por Asesor ───────────────────────────────────────────────
+
+function switchTipifTab(tab) {
+  document.getElementById('tipifTabDay').classList.toggle('active', tab === 'day');
+  document.getElementById('tipifTabMes').classList.toggle('active', tab === 'mes');
+  currentTipifTab = tab;
+  renderTipifTable();
+}
+
+function renderTipifTable() {
+  if (!currentSupervisor) return;
+  const s = currentSupervisor;
+  const body = document.getElementById('tipifBody');
+  body.innerHTML = '';
+  const isDay = currentTipifTab === 'day';
+  const filtro = (document.getElementById('tipifSearch')?.value || '').trim().toUpperCase();
+
+  // Construir filas: por cada asesor, listar sus tipificaciones
+  let hasAny = false;
+
+  s.asesores.forEach(a => {
+    const tipMap = isDay ? a.tipifDia : a.tipifMes;
+    const tipKeys = Object.keys(tipMap).sort();
+
+    // Filtrar por búsqueda
+    const nombreMatch = !filtro || a.nombre.toUpperCase().includes(filtro) || a.usuario.includes(filtro);
+    const motivosVisibles = tipKeys.filter(k => {
+      if (!filtro) return true;
+      return nombreMatch || k.includes(filtro);
+    });
+
+    if (motivosVisibles.length === 0 && !nombreMatch) return;
+    if (motivosVisibles.length === 0) return; // no data for this agent
+
+    hasAny = true;
+
+    // Fila de cabecera del asesor
+    const headerRow = document.createElement('tr');
+    headerRow.className = 'asesor-group-row';
+    // Totales del asesor (suma de sus tipificaciones)
+    let totP=0, totN=0, totD=0, totT=0;
+    motivosVisibles.forEach(k => {
+      totP += tipMap[k].prom; totN += tipMap[k].pas;
+      totD += tipMap[k].det; totT += tipMap[k].total;
+    });
+    const tnpsAse = calcTNPS(totP, totD, totT);
+    const tnpsAseStr = tnpsAse !== null ? tnpsAse.toFixed(1)+'%' : '—';
+    const tnpsAseCls = tnpsAse === null ? 'n' : tnpsAse >= 82 ? 'g' : tnpsAse >= 70 ? 'y' : 'r';
+
+    headerRow.innerHTML = `
+      <td class="asesor-cell">
+        ${a.nombre}
+        <span class="asesor-id">${a.usuario}</span>
+      </td>
+      <td class="tip-num tip-prom">${totP}</td>
+      <td class="tip-num tip-neut">${totN}</td>
+      <td class="tip-num tip-det">${totD}</td>
+      <td class="tip-num tip-total">${totT}</td>
+      <td class="tip-tnps-cell"><span class="tip-tnps-badge ${tnpsAseCls}">${tnpsAseStr}</span></td>
+    `;
+    body.appendChild(headerRow);
+
+    // Filas de cada tipificación
+    motivosVisibles.forEach(tipif => {
+      const t = tipMap[tipif];
+      const tnpsTip = calcTNPS(t.prom, t.det, t.total);
+      const tnpsTipStr = tnpsTip !== null ? tnpsTip.toFixed(1)+'%' : '—';
+      const tnpsTipCls = tnpsTip === null ? 'n' : tnpsTip >= 82 ? 'g' : tnpsTip >= 70 ? 'y' : 'r';
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="motivo-cell"><span class="motivo-label">📋 ${tipif}</span></td>
+        <td class="tip-num tip-prom">${t.prom}</td>
+        <td class="tip-num tip-neut">${t.pas}</td>
+        <td class="tip-num tip-det">${t.det}</td>
+        <td class="tip-num tip-total">${t.total}</td>
+        <td class="tip-tnps-cell"><span class="tip-tnps-badge ${tnpsTipCls}">${tnpsTipStr}</span></td>
+      `;
+      body.appendChild(tr);
+    });
+  });
+
+  if (!hasAny) {
+    body.innerHTML = `<tr><td colspan="6" class="no-data-msg">No hay datos de tipificación para este período.</td></tr>`;
+  }
+}
+
+// ── Salir ─────────────────────────────────────────────────────────────────
 
 function salir() {
   document.getElementById('dashScreen').style.display  = 'none';
@@ -972,7 +1097,6 @@ function salir() {
   sortCol = 'tnps'; sortDir = -1;
 }
 
-// Inicializar eventos de ordenamiento
 setupSortableHeaders();
 </script>
 </body>
